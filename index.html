@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#00E08A" />
+  <meta name="description" content="ProLab Performance — planos de treino, ferramentas e acompanhamento de performance." />
+  <title>ProLab Performance</title>
+
+  <!-- Google Fonts (Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="logged-out">
+  <a class="skip-link" href="#main">Saltar para o conteúdo</a>
+
+  <header class="site-header" id="topo">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="ProLab Performance">
+        <span class="brand-mark" aria-hidden="true">⚡</span>
+        <span class="brand-text">ProLab <span>Performance</span></span>
+      </a>
+
+      <nav class="primary-nav" aria-label="Navegação principal">
+        <button
+          id="navToggle"
+          class="nav-toggle"
+          type="button"
+          aria-controls="navMenu"
+          aria-expanded="false"       
+          aria-label="Abrir menu"
+          data-ripple
+        >
+          <span class="nav-toggle-lines" aria-hidden="true"></span>
+        </button>
+
+        <div id="navMenu" class="nav-menu">
+<!-- ARIA Tabs -->
+<div class="tabs" role="tablist" aria-label="Abas do site">
+  <button
+    class="tab-btn"
+    role="tab"
+    id="tab-home"
+    aria-controls="panel-home"
+    aria-selected="true"
+    tabindex="0"
+    data-tab="home"
+    data-ripple
+  >
+    Home
+  </button>
+
+  <button
+    class="tab-btn"
+    role="tab"
+    id="tab-planos"
+    aria-controls="panel-planos"
+    aria-selected="false"
+    tabindex="-1"
+    data-tab="planos"
+    data-ripple
+  >
+    Planos
+  </button>
+
+  <button
+    class="tab-btn"
+    role="tab"
+    id="tab-ferramentas"
+    aria-controls="panel-ferramentas"
+    aria-selected="false"
+    tabindex="-1"
+    data-tab="ferramentas"
+    data-ripple
+  >
+    Ferramentas
+  </button>
+
+  <button
+    class="tab-btn"
+    role="tab"
+    id="tab-perfil"
+    aria-controls="panel-perfil"
+    aria-selected="false"
+    tabindex="-1"
+    data-tab="perfil"
+    data-ripple
+  >
+    Perfil
+  </button>
+
+  <button class="tab-btn" type="button" id="openLogin" data-ripple>
+    Login
+  </button>
+
+  <button class="tab-btn" type="button" id="openRegister" data-ripple>
+    Registo
+  </button>
+
+  <button class="tab-btn" type="button" id="logoutButton" hidden data-ripple>
+    Sair
+  </button>
+</div>
+      </nav>
+    </div>
+
+    <div id="navBackdrop" class="nav-backdrop" aria-hidden="true"></div>
+  </header>
+
+  <main id="main">
+    <!-- TAB: HOME -->
+    <section
+      id="panel-home"
+      class="tabpanel"
+      role="tabpanel"
+      aria-labelledby="tab-home"
+      data-tabpanel="home"
+    >
+      <nav class="panel-nav container" aria-label="Atalhos da aba Home" data-reveal data-delay="0">
+        <a class="panel-link" href="#home-hero" data-subnav-link>Hero</a>
+        <a class="panel-link" href="#home-objectivos" data-subnav-link>Objetivos</a>
+      </nav>
+
+      <section id="home-hero" class="hero" data-section>
+        <div class="container hero-inner" data-reveal data-delay="0">
+          <p class="kicker">PLATAFORMA DE TREINO E PERFORMANCE</p>
+
+          <h1 class="hero-title">
+            Constrói performance com <span class="accent">método</span> e consistência.
+          </h1>
+
+<p class="hero-subtitle guest-only">
+  Plataforma de acompanhamento físico para organizar objetivos, planos, ferramentas e evolução pessoal.
+  Faz login ou cria uma conta para acessar a experiência completa.
+</p>
+
+<div class="hero-actions guest-only">
+  <button class="btn btn-primary" type="button" data-open-login data-ripple>
+    Fazer login
+  </button>
+  <button class="btn btn-ghost" type="button" data-open-register data-ripple>
+    Criar conta
+  </button>
+</div>
+
+<p class="hero-subtitle auth-only">
+  Seleciona um objetivo, ajusta o nível do plano e usa ferramentas (IMC + HIIT + checklist + quiz)
+  para acompanhar evolução semana a semana.
+</p>
+
+<div class="hero-actions auth-only">
+  <button class="btn btn-primary" type="button" data-open-tab="planos" data-ripple>
+    Ver planos
+  </button>
+  <button class="btn btn-ghost" type="button" data-open-tab="ferramentas" data-ripple>
+    Abrir ferramentas
+  </button>
+</div>
+
+<div class="hero-metrics auth-only" aria-label="Indicadores" data-reveal data-delay="140">
+            <div class="metric">
+              <span class="metric-value">4</span>
+              <span class="metric-label">Abas</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value">4</span>
+              <span class="metric-label">Objetivos</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value">3</span>
+              <span class="metric-label">Níveis</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="home-objectivos" class="section" data-section>
+        <div class="container">
+          <header class="section-header" data-reveal data-delay="0">
+            <p class="section-kicker">OBJETIVOS</p>
+            <h2>Escolhe o teu objetivo</h2>
+            <p class="section-subtitle">
+              A seleção atualiza o plano recomendado na aba <strong>Planos</strong> e fica guardada.
+            </p>
+          </header>
+
+          <div
+            id="objectiveGroup"
+            class="objective-grid"
+            role="radiogroup"
+            aria-label="Objetivo de treino"
+          >
+            <button
+              class="objective-card"
+              type="button"
+              role="radio"
+              aria-checked="false"
+              tabindex="0"
+              data-objective="hipertrofia"
+              data-reveal
+              data-delay="0"
+              data-ripple
+            >
+              <span class="objective-emoji" aria-hidden="true">🏋️</span>
+              <span class="objective-title">Hipertrofia</span>
+              <span class="objective-desc">Ganho de massa, volume e progressão.</span>
+            </button>
+
+            <button
+              class="objective-card"
+              type="button"
+              role="radio"
+              aria-checked="false"
+              tabindex="-1"
+              data-objective="emagrecimento"
+              data-reveal
+              data-delay="80"
+              data-ripple
+            >
+              <span class="objective-emoji" aria-hidden="true">🔥</span>
+              <span class="objective-title">Emagrecimento</span>
+              <span class="objective-desc">Força + condicionamento + consistência.</span>
+            </button>
+
+            <button
+              class="objective-card"
+              type="button"
+              role="radio"
+              aria-checked="false"
+              tabindex="-1"
+              data-objective="resistencia"
+              data-reveal
+              data-delay="160"
+              data-ripple
+            >
+              <span class="objective-emoji" aria-hidden="true">🏃</span>
+              <span class="objective-title">Resistência</span>
+              <span class="objective-desc">Base aeróbica e intervalos controlados.</span>
+            </button>
+
+            <button
+              class="objective-card"
+              type="button"
+              role="radio"
+              aria-checked="false"
+              tabindex="-1"
+              data-objective="forca"
+              data-reveal
+              data-delay="240"
+              data-ripple
+            >
+              <span class="objective-emoji" aria-hidden="true">💪</span>
+              <span class="objective-title">Força</span>
+              <span class="objective-desc">Cargas altas, técnica e descanso.</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- TAB: PLANOS -->
+    <section
+      id="panel-planos"
+      class="tabpanel"
+      role="tabpanel"
+      aria-labelledby="tab-planos"
+      data-tabpanel="planos"
+      hidden
+    >
+      <nav class="panel-nav container" aria-label="Atalhos da aba Planos" data-reveal data-delay="0">
+        <a class="panel-link" href="#planos-plano" data-subnav-link>Plano</a>
+        <a class="panel-link" href="#planos-rotina" data-subnav-link>Rotina</a>
+        <a class="panel-link" href="#planos-exportar" data-subnav-link>Exportar</a>
+      </nav>
+
+      <section class="section" id="planos-plano" data-section>
+        <div class="container">
+          <header class="section-header" data-reveal data-delay="0">
+            <p class="section-kicker">PLANOS</p>
+            <h2>Plano recomendado</h2>
+            <p class="section-subtitle">
+              Escolhe o nível e vê a rotina semanal. O objetivo vem da aba <strong>Home</strong>.
+            </p>
+          </header>
+
+          <div class="plan-controls" data-reveal data-delay="80">
+            <div class="segmented" role="radiogroup" aria-label="Nível do plano" id="levelGroup">
+              <button class="seg-btn" type="button" role="radio" aria-checked="true" tabindex="0" data-level="iniciante" data-ripple>
+                Iniciante
+              </button>
+              <button class="seg-btn" type="button" role="radio" aria-checked="false" tabindex="-1" data-level="intermedio" data-ripple>
+                Intermédio
+              </button>
+              <button class="seg-btn" type="button" role="radio" aria-checked="false" tabindex="-1" data-level="avancado" data-ripple>
+                Avançado
+              </button>
+            </div>
+
+            <button class="btn btn-ghost" type="button" data-open-tab="home" data-scroll-to="#home-objectivos" data-ripple>
+              Alterar objetivo
+            </button>
+          </div>
+
+          <article id="planCard" class="plan-card" aria-live="polite" data-reveal data-delay="140">
+            <div class="plan-empty">
+              <p class="plan-empty-title">Ainda não escolheste um objetivo.</p>
+              <p class="plan-empty-text">Vai à aba <strong>Home</strong>, seleciona um objetivo e volta aqui.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="planos-rotina" data-section>
+        <div class="container">
+          <header class="section-header" data-reveal data-delay="0">
+            <p class="section-kicker">ROTINA</p>
+            <h2>Rotina semanal</h2>
+            <p class="section-subtitle">
+              Uma estrutura simples e consistente. Ajusta cargas/ritmo conforme o nível.
+            </p>
+          </header>
+
+          <div class="table-wrap" data-reveal data-delay="80">
+            <table class="routine-table" aria-label="Tabela de rotina semanal">
+              <thead>
+                <tr>
+                  <th scope="col">Dia</th>
+                  <th scope="col">Sessão</th>
+                </tr>
+              </thead>
+              <tbody id="routineBody">
+                <tr><td>—</td><td>Seleciona um objetivo para gerar a rotina.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="planos-exportar" data-section>
+        <div class="container">
+          <header class="section-header" data-reveal data-delay="0">
+            <p class="section-kicker">EXPORTAR</p>
+            <h2>Imprimir / Exportar plano</h2>
+            <p class="section-subtitle">
+              Abre a vista de impressão com o plano e a rotina. (Funciona como “exportação” para PDF via browser.)
+            </p>
+          </header>
+
+          <div class="export-actions" data-reveal data-delay="80">
+            <button id="printPlan" class="btn btn-primary" type="button" data-ripple>
+              Imprimir / Exportar
+            </button>
+            <p class="muted">
+              Dica: no diálogo de impressão, escolhe “Guardar como PDF”.
+            </p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- TAB: FERRAMENTAS -->
+    <section
+      id="panel-ferramentas"
+      class="tabpanel"
+      role="tabpanel"
+      aria-labelledby="tab-ferramentas"
+      data-tabpanel="ferramentas"
+      hidden
+    >
+      <nav class="panel-nav container" aria-label="Atalhos da aba Ferramentas" data-reveal data-delay="0">
+        <a class="panel-link" href="#tools-imc" data-subnav-link>IMC</a>
+        <a class="panel-link" href="#tools-hiit" data-subnav-link>HIIT</a>
+        <a class="panel-link" href="#tools-checklist" data-subnav-link>Checklist</a>
+        <a class="panel-link" href="#tools-quiz" data-subnav-link>Quiz</a>
+      </nav>
+
+      <section class="section" id="tools-imc" data-section>
+        <div class="container">
+          <header class="section-header" data-reveal data-delay="0">
+            <p class="section-kicker">IMC</p>
+            <h2>Calculadora de IMC</h2>
+            <p class="section-subtitle">Aceita vírgula ou ponto. Validações incluídas e resultado com aria-live.</p>
+          </header>
+
+          <div class="tools-grid">
+            <article class="tool-card" data-reveal data-delay="80">
+              <form id="imcForm" class="form" novalidate>
+                <div class="field">
+                  <label for="peso">Peso (kg)</label>
+                  <input id="peso" name="peso" type="text" inputmode="decimal" autocomplete="off" placeholder="Ex.: 72,5" />
+                </div>
+
+                <div class="field">
+                  <label for="altura">Altura (m)</label>
+                  <input id="altura" name="altura" type="text" inputmode="decimal" autocomplete="off" placeholder="Ex.: 1,75" />
+                </div>
+
+                <button class="btn btn-primary btn-full" type="submit" data-ripple>Calcular</button>
+                <p id="resultado" class="result" role="status" aria-live="polite" aria-atomic="true"></p>
+              </form>
+            </article>
+
+            <article class="tool-card tip-card" data-reveal data-delay="140">
+              <h3>Nota rápida</h3>
+              <p class="muted">
+                O IMC é um indicador geral e não distingue massa muscular de gordura. Usa como referência, não como diagnóstico.
+              </p>
+              <button class="btn btn-ghost" type="button" data-open-tab="perfil" data-ripple>
+                Guardar dados no Perfil
+              </button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="tools-hiit" data-section>
+        <div class="container">
+          <header class="section-header" data-reveal data-delay="0">
+            <p class="section-kicker">HIIT</p>
+            <h2>Temporizador HIIT</h2>
+            <p class="section-subtitle">Ciclo de 30s em loop com progress ring SVG e Start/Pausa/Reset.</p>
+          </header>
+
+          <article class="tool-card timer-card" data-reveal data-delay="80">
+            <div class="timer">
+              <p id="timerPhase" class="timer-phase">Ciclo (30s)</p>
+
+              <div
+                id="timerRing"
+                class="timer-ring"
+                role="progressbar"
+                aria-label="Tempo restante"
+                aria-valuemin="0"
+                aria-valuemax="30"
+                aria-valuenow="30"
+              >
+                <svg class="timer-svg" viewBox="0 0 120 120" aria-hidden="true">
+                  <circle class="timer-track" cx="60" cy="60" r="52"></circle>
+                  <circle id="timerProgress" class="timer-progress" cx="60" cy="60" r="52"></circle>
+                </svg>
+
+                <div class="timer-center">
+                  <span id="timerValue" class="timer-value">30</span>
+                  <span class="timer-unit">s</span>
+                </div>
+              </div>
+
+              <div class="timer-actions">
+                <button id="timerStart" class="btn btn-primary" type="button" aria-pressed="false" data-ripple>Iniciar</button>
+                <button id="timerReset" class="btn btn-ghost" type="button" data-ripple>Reset</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="tools-checklist" data-section>
+        <div class="container">
+          <header class="section-header" data-reveal data-delay="0">
+            <p class="section-kicker">CHECKLIST</p>
+            <h2>Checklist semanal</h2>
+            <p class="section-subtitle">Marca treinos concluídos. Guarda automaticamente (localStorage) por semana.</p>
+          </header>
+
+          <article class="tool-card" data-reveal data-delay="80">
+            <div class="checklist-head">
+              <div>
+                <h3 class="h3">Semana</h3>
+                <p class="muted" id="weekLabel">—</p>
+              </div>
+              <button id="resetChecklist" class="btn btn-ghost" type="button" data-ripple>Repor semana</button>
+            </div>
+
+            <div class="progress">
+              <div class="progress-bar" id="checklistBar" style="width: 0%"></div>
+            </div>
+            <p class="muted" id="checklistMeta">0/7 concluídos</p>
+
+            <div class="checklist" id="checklist"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="tools-quiz" data-section>
+        <div class="container">
+          <header class="section-header" data-reveal data-delay="0">
+            <p class="section-kicker">QUIZ</p>
+            <h2>Quiz rápido</h2>
+            <p class="section-subtitle">3 perguntas com feedback imediato.</p>
+          </header>
+
+          <article class="tool-card" data-reveal data-delay="80">
+            <div class="quiz-head">
+              <p class="muted">Pontuação: <strong id="quizScore">0</strong>/3</p>
+              <button id="resetQuiz" class="btn btn-ghost" type="button" data-ripple>Reiniciar</button>
+            </div>
+
+            <form id="quizForm" class="quiz" novalidate>
+              <fieldset class="quiz-q" data-q="1" data-answer="b">
+                <legend>1) Para hipertrofia, o mais importante é…</legend>
+                <label class="opt"><input type="radio" name="q1" value="a" /> Treinar só cardio</label>
+                <label class="opt"><input type="radio" name="q1" value="b" /> Progressão + volume consistente</label>
+                <label class="opt"><input type="radio" name="q1" value="c" /> Cortar totalmente hidratos</label>
+                <p class="feedback" aria-live="polite"></p>
+              </fieldset>
+
+              <fieldset class="quiz-q" data-q="2" data-answer="c">
+                <legend>2) “Prefers-reduced-motion” serve para…</legend>
+                <label class="opt"><input type="radio" name="q2" value="a" /> Aumentar FPS</label>
+                <label class="opt"><input type="radio" name="q2" value="b" /> Guardar dados no browser</label>
+                <label class="opt"><input type="radio" name="q2" value="c" /> Reduzir animações para utilizadores sensíveis a movimento</label>
+                <p class="feedback" aria-live="polite"></p>
+              </fieldset>
+
+              <fieldset class="quiz-q" data-q="3" data-answer="a">
+                <legend>3) Para calcular IMC precisamos de…</legend>
+                <label class="opt"><input type="radio" name="q3" value="a" /> Peso e altura</label>
+                <label class="opt"><input type="radio" name="q3" value="b" /> Idade e frequência cardíaca</label>
+                <label class="opt"><input type="radio" name="q3" value="c" /> Passos diários</label>
+                <p class="feedback" aria-live="polite"></p>
+              </fieldset>
+            </form>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <!-- TAB: PERFIL -->
+    <section
+      id="panel-perfil"
+      class="tabpanel"
+      role="tabpanel"
+      aria-labelledby="tab-perfil"
+      data-tabpanel="perfil"
+      hidden
+    >
+      <nav class="panel-nav container" aria-label="Atalhos da aba Perfil" data-reveal data-delay="0">
+        <a class="panel-link" href="#perfil-dados" data-subnav-link>Dados</a>
+        <a class="panel-link" href="#perfil-stats" data-subnav-link>Estatísticas</a>
+      </nav>
+
+      <section class="section" id="perfil-dados" data-section>
+        <div class="container">
+          <header class="section-header" data-reveal data-delay="0">
+            <p class="section-kicker">PERFIL</p>
+            <h2>Dados do utilizador</h2>
+            <p class="section-subtitle">Guardado localmente no teu browser (localStorage).</p>
+          </header>
+
+          <div class="tools-grid">
+            <article class="tool-card" data-reveal data-delay="80">
+              <form id="profileForm" class="form" novalidate>
+                <div class="field">
+                  <label for="nome">Nome</label>
+                  <input id="nome" name="nome" type="text" autocomplete="name" placeholder="Ex.: João" />
+                </div>
+
+                <div class="field">
+                  <label for="idade">Idade</label>
+                  <input id="idade" name="idade" type="number" inputmode="numeric" min="1" max="120" placeholder="Ex.: 17" />
+                </div>
+
+                <div class="field">
+                  <label for="pesoPerfil">Peso (kg)</label>
+                  <input id="pesoPerfil" name="pesoPerfil" type="text" inputmode="decimal" placeholder="Ex.: 72,5" />
+                </div>
+
+                <div class="field">
+                  <label for="alturaPerfil">Altura (m)</label>
+                  <input id="alturaPerfil" name="alturaPerfil" type="text" inputmode="decimal" placeholder="Ex.: 1,75" />
+                </div>
+
+                <button class="btn btn-primary btn-full" type="submit" data-ripple>Guardar perfil</button>
+                <p class="muted" id="profileMsg" role="status" aria-live="polite"></p>
+              </form>
+            </article>
+
+            <article class="tool-card" data-reveal data-delay="140">
+              <h3>Atalhos</h3>
+              <p class="muted">Depois de guardar, os valores preenchem automaticamente o IMC em Ferramentas.</p>
+              <button class="btn btn-ghost" type="button" data-open-tab="ferramentas" data-scroll-to="#tools-imc" data-ripple>
+                Ir para IMC
+              </button>
+              <button class="btn btn-ghost" type="button" data-open-tab="planos" data-ripple>
+                Ver plano
+              </button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="perfil-stats" data-section>
+        <div class="container">
+          <header class="section-header" data-reveal data-delay="0">
+            <p class="section-kicker">ESTATÍSTICAS</p>
+            <h2>Resumo</h2>
+            <p class="section-subtitle">IMC calculado a partir do Perfil + objetivo e nível atuais.</p>
+          </header>
+
+          <div class="stats-grid" data-reveal data-delay="80">
+            <div class="stat-card">
+              <p class="stat-label">IMC</p>
+              <p class="stat-value" id="statIMC">—</p>
+              <p class="muted" id="statIMCText">—</p>
+            </div>
+
+            <div class="stat-card">
+              <p class="stat-label">Objetivo</p>
+              <p class="stat-value" id="statObjetivo">—</p>
+              <p class="muted">Selecionado na aba Home</p>
+            </div>
+
+            <div class="stat-card">
+              <p class="stat-label">Nível do plano</p>
+              <p class="stat-value" id="statNivel">—</p>
+              <p class="muted">Definido na aba Planos</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <button id="topBtn" class="to-top" type="button" aria-label="Voltar ao topo" data-ripple>↑</button>
+  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <dialog id="loginDialog" class="auth-dialog">
+  <form id="loginForm" class="form" method="dialog">
+    <h2>Login</h2>
+
+    <div class="field">
+      <label for="loginEmail">E-mail</label>
+      <input id="loginEmail" name="email" type="email" autocomplete="email" required />
+    </div>
+
+    <div class="field">
+      <label for="loginPassword">Palavra-passe</label>
+      <input id="loginPassword" name="password" type="password" autocomplete="current-password" required />
+    </div>
+
+    <button class="btn btn-primary btn-full" type="submit">Entrar</button>
+    <button class="btn btn-ghost btn-full" type="button" data-close-dialog>Cancelar</button>
+
+    <p id="loginMsg" class="muted" role="status" aria-live="polite"></p>
+  </form>
+</dialog>
+
+<dialog id="registerDialog" class="auth-dialog">
+  <form id="registerForm" class="form" method="dialog">
+    <h2>Registo</h2>
+
+    <div class="field">
+      <label for="registerNome">Nome</label>
+      <input id="registerNome" name="nome" type="text" autocomplete="name" required />
+    </div>
+
+    <div class="field">
+      <label for="registerEmail">E-mail</label>
+      <input id="registerEmail" name="email" type="email" autocomplete="email" required />
+    </div>
+
+    <div class="field">
+      <label for="registerPassword">Palavra-passe</label>
+      <input id="registerPassword" name="password" type="password" autocomplete="new-password" minlength="6" required />
+    </div>
+
+    <button class="btn btn-primary btn-full" type="submit">Criar conta</button>
+    <button class="btn btn-ghost btn-full" type="button" data-close-dialog>Cancelar</button>
+
+    <p id="registerMsg" class="muted" role="status" aria-live="polite"></p>
+  </form>
+</dialog>
+
+  <noscript>
+    <div class="noscript">Este site precisa de JavaScript para funcionar corretamente.</div>
+  </noscript>
+
+ <script src="script.js"></script>
+<script src="auth-integration.js"></script></body>
+</html>
