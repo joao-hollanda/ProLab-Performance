@@ -6,6 +6,45 @@
   let loggedIn = false;
   let currentUser = null;
 
+  /* -----------------------------------------------------------
+     Utilizador MOCK para testes (funciona sem PHP/MySQL).
+     Faz login com estas credenciais para entrar como utilizador
+     de teste. Remove este bloco quando o backend estiver pronto.
+  ------------------------------------------------------------ */
+  const MOCK_FLAG = "prolab.mockSession";
+  const MOCK_USER = {
+    email: "teste@prolab.pt",
+    password: "teste123",
+    user: { id: 0, nome: "João Teste", email: "teste@prolab.pt" },
+    perfil: {
+      nome: "João Teste",
+      idade: 24,
+      peso_kg: "78",
+      altura_m: "1,78",
+      objetivo: "hipertrofia",
+      nivel: "intermedio",
+    },
+  };
+
+  const isMockActive = () => localStorage.getItem(MOCK_FLAG) === "1";
+
+  function activateMock() {
+    const p = MOCK_USER.perfil;
+    localStorage.setItem(MOCK_FLAG, "1");
+    localStorage.setItem("prolab.profile", JSON.stringify({
+      nome: p.nome,
+      idade: String(p.idade),
+      peso: p.peso_kg,
+      altura: p.altura_m,
+    }));
+    localStorage.setItem("prolab.selectedObjective", p.objetivo);
+    localStorage.setItem("prolab.planLevel", p.nivel);
+  }
+
+  function clearMock() {
+    localStorage.removeItem(MOCK_FLAG);
+  }
+
   async function apiRequest(url, options = {}) {
     const response = await fetch(url, {
       credentials: "same-origin",
@@ -34,12 +73,6 @@ function setAuthButtons() {
     $("#tab-perfil"),
   ];
 
-  const protectedPanels = [
-    $("#panel-planos"),
-    $("#panel-ferramentas"),
-    $("#panel-perfil"),
-  ];
-
   if (openLogin) openLogin.hidden = loggedIn;
   if (openRegister) openRegister.hidden = loggedIn;
   if (logoutButton) logoutButton.hidden = !loggedIn;
@@ -47,12 +80,11 @@ function setAuthButtons() {
   document.body.classList.toggle("logged-out", !loggedIn);
   document.body.classList.toggle("logged-in", loggedIn);
 
+  // Mostra/esconde apenas os BOTÕES das abas protegidas.
+  // A visibilidade dos PAINÉIS é controlada só pelo sistema de abas (script.js),
+  // senão os 3 painéis abrem todos ao mesmo tempo no login (página gigante e vazia).
   protectedTabs.forEach((tab) => {
     if (tab) tab.hidden = !loggedIn;
-  });
-
-  protectedPanels.forEach((panel) => {
-    if (panel) panel.hidden = !loggedIn;
   });
 
   if (!loggedIn) {
@@ -104,15 +136,30 @@ function setAuthButtons() {
   }
 
   async function checkSession() {
-    const result = await apiRequest("session.php");
+    // Sessão de teste (mock): não toca no backend.
+    if (isMockActive()) {
+      loggedIn = true;
+      currentUser = MOCK_USER.user;
+      setAuthButtons();
+      return; // o perfil já está em localStorage; o script.js trata do prefill
+    }
 
-    loggedIn = Boolean(result.logged_in);
-    currentUser = result.user || null;
+    try {
+      const result = await apiRequest("session.php");
 
-    setAuthButtons();
+      loggedIn = Boolean(result.logged_in);
+      currentUser = result.user || null;
 
-    if (loggedIn) {
-      await loadProfileFromDatabase();
+      setAuthButtons();
+
+      if (loggedIn) {
+        await loadProfileFromDatabase();
+      }
+    } catch {
+      // Backend indisponível: trata como deslogado em vez de rebentar.
+      loggedIn = false;
+      currentUser = null;
+      setAuthButtons();
     }
   }
 
@@ -146,6 +193,7 @@ function setAuthButtons() {
 
   async function saveProfileToDatabase() {
     if (!loggedIn) return;
+    if (isMockActive()) return; // mock guarda só em localStorage (via script.js)
 
     const payload = {
       idade: $("#idade")?.value || null,
@@ -170,30 +218,35 @@ function setAuthButtons() {
     const registerForm = $("#registerForm");
     const logoutButton = $("#logoutButton");
 
-    openLogin?.addEventListener("click", () => {
-      loginDialog?.showModal();
-    });
+    const openDialog = (dialog) => {
+      if (dialog && !dialog.open) dialog.showModal();
+    };
 
-    openRegister?.addEventListener("click", () => {
-      registerDialog?.showModal();
-    });
+    openLogin?.addEventListener("click", () => openDialog(loginDialog));
+    openRegister?.addEventListener("click", () => openDialog(registerDialog));
 
     document.addEventListener("click", (event) => {
-  const loginButton = event.target.closest("[data-open-login]");
-  const registerButton = event.target.closest("[data-open-register]");
+      if (event.target.closest("[data-open-login]")) openDialog(loginDialog);
+      if (event.target.closest("[data-open-register]")) openDialog(registerDialog);
 
-  if (loginButton) {
-    loginDialog?.showModal();
-  }
-
-  if (registerButton) {
-    registerDialog?.showModal();
-  }
-});
+      // Botão "Cancelar" / fechar dentro de qualquer diálogo
+      const closeButton = event.target.closest("[data-close-dialog]");
+      if (closeButton) closeButton.closest("dialog")?.close();
+    });
     loginForm?.addEventListener("submit", async (event) => {
       event.preventDefault();
 
       const data = Object.fromEntries(new FormData(loginForm));
+
+      // Atalho de teste: utilizador mock (sem backend).
+      if (data.email === MOCK_USER.email && data.password === MOCK_USER.password) {
+        activateMock();
+        showAuthMessage($("#loginMsg"), "Sessão de teste iniciada.");
+        loginDialog?.close();
+        alert(`Bem-vindo, ${MOCK_USER.user.nome}! (conta de teste)`);
+        window.location.reload();
+        return;
+      }
 
       const result = await apiRequest("login.php", {
         method: "POST",
@@ -235,23 +288,36 @@ function setAuthButtons() {
     });
 
     logoutButton?.addEventListener("click", async () => {
-      await apiRequest("logout.php", {
-        method: "POST",
-        body: "{}",
-      });
+      const wasMock = isMockActive();
+
+      if (wasMock) {
+        clearMock();
+      } else {
+        try {
+          await apiRequest("logout.php", { method: "POST", body: "{}" });
+        } catch {
+          /* backend indisponível — termina sessão localmente na mesma */
+        }
+      }
 
       loggedIn = false;
       currentUser = null;
 
       setAuthButtons();
 
-localStorage.removeItem("prolab.profile");
-localStorage.removeItem("prolab.selectedObjective");
-localStorage.removeItem("prolab.planLevel");
-localStorage.setItem("prolab.activeTab", "home");
+      localStorage.removeItem("prolab.profile");
+      localStorage.removeItem("prolab.selectedObjective");
+      localStorage.removeItem("prolab.planLevel");
+      localStorage.setItem("prolab.activeTab", "home");
 
-alert("Sessão terminada.");
-window.location.href = "index.php#home";
+      alert("Sessão terminada.");
+
+      // Mock: recarrega a página atual (pode ser index.html/file://).
+      if (wasMock) {
+        window.location.reload();
+      } else {
+        window.location.href = "index.php#home";
+      }
     });
 
     $("#profileForm")?.addEventListener("submit", () => {

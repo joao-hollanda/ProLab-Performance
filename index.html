@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="color-scheme" content="dark light" />
-  <meta name="theme-color" content="#00E08A" />
+
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#0A0B0D" />
   <meta name="description" content="ProLab Performance — planos de treino, ferramentas e acompanhamento de performance." />
   <title>ProLab Performance</title>
 
-  <!-- Google Fonts (Inter) -->
+  <!-- Google Fonts (Space Grotesk + Inter) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -22,7 +23,11 @@
   <header class="site-header" id="topo">
     <div class="container header-inner">
       <a class="brand" href="#home" aria-label="ProLab Performance">
-        <span class="brand-mark" aria-hidden="true">⚡</span>
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 20V13M9.5 20V8M15 20v-9M20.5 20V4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+          </svg>
+        </span>
         <span class="brand-text">ProLab <span>Performance</span></span>
       </a>
 
@@ -128,15 +133,15 @@
 
       <section id="home-hero" class="hero" data-section>
         <div class="container hero-inner" data-reveal data-delay="0">
-          <p class="kicker">PLATAFORMA DE TREINO E PERFORMANCE</p>
+          <p class="kicker">Sistema de treino e performance</p>
 
           <h1 class="hero-title">
-            Constrói performance com <span class="accent">método</span> e consistência.
+            Constrói performance com <span class="accent">método</span>, não com sorte.
           </h1>
 
 <p class="hero-subtitle guest-only">
-  Plataforma de acompanhamento físico para organizar objetivos, planos, ferramentas e evolução pessoal.
-  Faz login ou cria uma conta para acessar a experiência completa.
+  Organiza objetivos, planos e ferramentas num só lugar e mede a tua evolução com clareza.
+  Entra ou cria conta para começar.
 </p>
 
 <div class="hero-actions guest-only">
@@ -149,8 +154,8 @@
 </div>
 
 <p class="hero-subtitle auth-only">
-  Seleciona um objetivo, ajusta o nível do plano e usa ferramentas (IMC + HIIT + checklist + quiz)
-  para acompanhar evolução semana a semana.
+  Escolhe um objetivo, ajusta o nível do plano e acompanha a tua evolução com as ferramentas certas —
+  semana após semana.
 </p>
 
 <div class="hero-actions auth-only">
@@ -206,7 +211,11 @@
               data-delay="0"
               data-ripple
             >
-              <span class="objective-emoji" aria-hidden="true">🏋️</span>
+              <span class="objective-emoji" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.5 9v6M4 10.5v3M17.5 9v6M20 10.5v3M6.5 12h11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
               <span class="objective-title">Hipertrofia</span>
               <span class="objective-desc">Ganho de massa, volume e progressão.</span>
             </button>
@@ -222,7 +231,11 @@
               data-delay="80"
               data-ripple
             >
-              <span class="objective-emoji" aria-hidden="true">🔥</span>
+              <span class="objective-emoji" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 3c.7 2.6-.9 4-2.2 5.3C8.3 9.7 7 11.2 7 13.6A5 5 0 0 0 17 14c0-2-1-3.6-2-5 .4 1-.5 2-1.4 2.2.8-2 .2-5.2-1.6-8.2Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
               <span class="objective-title">Emagrecimento</span>
               <span class="objective-desc">Força + condicionamento + consistência.</span>
             </button>
@@ -238,7 +251,11 @@
               data-delay="160"
               data-ripple
             >
-              <span class="objective-emoji" aria-hidden="true">🏃</span>
+              <span class="objective-emoji" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 12h4l2-5 4 10 2-5h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
               <span class="objective-title">Resistência</span>
               <span class="objective-desc">Base aeróbica e intervalos controlados.</span>
             </button>
@@ -254,7 +271,11 @@
               data-delay="240"
               data-ripple
             >
-              <span class="objective-emoji" aria-hidden="true">💪</span>
+              <span class="objective-emoji" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
               <span class="objective-title">Força</span>
               <span class="objective-desc">Cargas altas, técnica e descanso.</span>
             </button>
@@ -625,6 +646,21 @@
       </section>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="brand" href="#home" aria-label="ProLab Performance">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 20V13M9.5 20V8M15 20v-9M20.5 20V4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand-text">ProLab <span>Performance</span></span>
+      </a>
+      <p class="footer-note">Treino estruturado, métricas honestas e progressão que se mede semana a semana.</p>
+      <p class="footer-copy">© 2026 ProLab Performance</p>
+    </div>
+  </footer>
 
   <button id="topBtn" class="to-top" type="button" aria-label="Voltar ao topo" data-ripple>↑</button>
   <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>

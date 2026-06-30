@@ -30,7 +30,15 @@
   };
 
   const safeJSONParse = (s, fallback) => {
-    try { return JSON.parse(s); } catch { return fallback; }
+    // getItem devolve null quando a chave não existe; JSON.parse(null) === null
+    // (não lança), por isso é preciso tratar o caso explicitamente.
+    if (s == null) return fallback;
+    try {
+      const value = JSON.parse(s);
+      return value == null ? fallback : value;
+    } catch {
+      return fallback;
+    }
   };
   const loadJSON = (key, fallback = null) => safeJSONParse(localStorage.getItem(key), fallback);
   const saveJSON = (key, value) => localStorage.setItem(key, JSON.stringify(value));
@@ -1099,12 +1107,8 @@
   updateObjectiveUI(getObjective());
   updateLevelUI(getLevel());
 
-  // Restore tab from hash or storage (priority: hash)
-  const handled = handleHashNavigation(location.hash);
-  if (!handled) {
-    const lastTab = localStorage.getItem(STORAGE.activeTab) || "home";
-    openTab(TAB_ORDER.includes(lastTab) ? lastTab : "home", { focus: false, updateHash: true });
-  }
+  // Home é sempre a aba padrão ao carregar (ignora aba guardada e hash).
+  openTab("home", { focus: false, updateHash: true });
 
   // Render plan AFTER tab restore (depends on selection)
   renderPlan();
